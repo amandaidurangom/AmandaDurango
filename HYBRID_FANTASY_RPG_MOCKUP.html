@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amanda Durango · Hybrid Fantasy RPG Portfolio</title>
+<style>
+:root{color-scheme:dark;--ink:#141310;--panel:#211e19;--gold:#b9945c;--text:#f7ead4;--muted:#d4c4ac}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#342920,var(--ink) 65%);color:var(--text);font:17px Georgia,serif}header,main{max-width:1440px;margin:auto;padding:24px}header,nav,.actions,.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:center}header{justify-content:space-between;border-bottom:1px solid var(--gold)}a{color:inherit}nav a{padding:8px}.brand{font-size:1.35rem;text-decoration:none}.brand small{display:block;color:var(--muted);font-size:.85rem}h1,h2,h3{font-weight:normal;margin:0 0 .6em}h1{font-size:clamp(2rem,5vw,4rem);text-align:center}h2{font-size:1.45rem}.frame{position:relative;background:var(--panel);border:4px double var(--gold);padding:clamp(14px,2vw,28px)}.frame::before,.frame::after{content:"◆";color:var(--gold);position:absolute;line-height:1;background:var(--panel)}.frame::before{top:-8px;left:-7px}.frame::after{bottom:-8px;right:-7px}.asset{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;padding:12px;color:var(--text);border:1px solid #9c8c74;background:linear-gradient(to top right,transparent 49.85%,#a6978055 50%,transparent 50.15%),linear-gradient(to top left,transparent 49.85%,#a6978055 50%,transparent 50.15%),#413d38}.hero{aspect-ratio:2.6}.center{text-align:center}.center .actions{justify-content:center}.button,button,select{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:8px 16px;border:3px double var(--gold);color:var(--text);background:#2b231b;font:inherit;text-decoration:none;cursor:pointer}.button:hover,button:hover{background:#483625}:focus-visible{outline:3px solid #ffe19e;outline-offset:4px}.hall,.archive,.classes,.cards{display:grid;gap:20px}.hall{grid-template-columns:minmax(175px,1fr) minmax(0,3fr) minmax(175px,1fr)}.archive{grid-template-columns:1.3fr 1fr}.classes{grid-template-columns:repeat(3,minmax(0,1fr))}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.portrait{aspect-ratio:4/5}.commands{display:grid;gap:12px;align-content:start}.dialogue{grid-column:1/-1}.controls{justify-content:space-between;margin-top:12px}p,li{line-height:1.5}ul{padding-left:1.3em}meter{width:100%;accent-color:var(--gold)}.filters{margin-bottom:20px}.filters label{display:grid;gap:5px}.tag{border:1px solid var(--gold);padding:4px 9px}.tags{display:flex;flex-wrap:wrap;gap:8px}.muted{color:var(--muted)}[hidden]{display:none!important}@media(max-width:900px){.hall{grid-template-columns:1fr 2fr}.commands{grid-column:1/-1;grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){header,main{padding:16px}.hall,.archive,.classes{grid-template-columns:minmax(0,1fr)}.showcase{grid-row:1}.cards{grid-template-columns:1fr}.portrait{aspect-ratio:1.5}.hero{aspect-ratio:1.6}}
+</style>
+<header>
+<a class="brand" href="#intro">Amanda Durango<small>Concept Art, Comics, Illustration and Design</small></a>
+<nav aria-label="Main navigation"><a href="#hall">Playing Hall</a><a href="#work-types">Work Types</a><a href="#portfolio">The Art Portfolio</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</header>
+<main>
+<section id="intro" class="frame center">
+<div class="asset hero">Illustration placeholder</div>
+<h1>Hybrid Fantasy RPG</h1>
+<p>Concept Art, Comics, Illustration and Design</p>
+<div class="actions"><a class="button" href="#hall">START PLAYING</a><a class="button" href="#portfolio">QUICK BROWSE</a></div>
+</section>
+<section id="hall" hidden>
+<h1>Playing Hall</h1>
+<div class="hall">
+<aside class="frame"><div class="asset portrait">Portrait placeholder</div><h2>Amanda Durango</h2><div aria-hidden="true">HP<meter value=".85"></meter>MP<meter value=".65"></meter></div><h3>Specs</h3><ul><li>Concept Art</li><li>Comic</li><li>Animation</li><li>Product Design</li><li>Character Design</li></ul></aside>
+<div class="frame showcase"><div id="slide" class="asset" aria-live="polite">Artwork placeholder 1 of 3</div><div class="actions controls"><button id="previous" type="button">← Previous</button><button id="next" type="button">Next →</button></div></div>
+<nav class="frame commands" aria-label="Hall commands"><a class="button" href="#portfolio">EXPLORE WORK</a><a class="button" href="#work-types">SELECT CLASS</a><a class="button" href="#about">CHARACTER PROFILE</a><a class="button" href="#contact">START QUEST</a></nav>
+<div class="frame dialogue">“Welcome to my Playing Hall. Explore my work, browse by specialty, or get in touch.”</div>
+</div>
+</section>
+<section id="work-types" hidden>
+<h1>Select Your Type of Work</h1>
+<div class="classes">
+<article class="frame"><h2>The Art</h2><div class="asset">Illustration placeholder</div><p>Illustration, character design and visual development.</p><a class="button" href="#portfolio/art">SEE MORE ART</a></article>
+<article class="frame"><h2>The Story</h2><div class="asset">Sequential art placeholder</div><p>Comics, visual storytelling and storyboarding.</p><a class="button" href="#portfolio/story">SEE MORE STORIES</a></article>
+<article class="frame"><h2>The Concept</h2><div class="asset">Concept placeholder</div><p>Concept development, design and art direction.</p><a class="button" href="#portfolio/concept">SEE MORE CONCEPT</a></article>
+</div>
+</section>
+<section id="portfolio" hidden>
+<h1>The Art Portfolio</h1>
+<div class="frame filters">
+<label>Specialty<select id="specialty"><option value="">All specialties</option><option value="art">The Art</option><option value="story">The Story</option><option value="concept">The Concept</option></select></label>
+<label>Discipline<select id="discipline"><option value="">All disciplines</option><option>Comic</option><option>Character Design</option><option>Concept Art</option></select></label>
+<label>Project Type<select id="type"><option value="">All project types</option><option>Sequential Art</option><option>Character Sheet</option><option>Visual Development</option></select></label>
+<button id="reset" type="button">Reset filters</button>
+</div>
+<p class="muted">Layout preview with sample labels and artwork placeholders.</p>
+<div class="archive" id="archive">
+<article class="frame" data-specialties="art concept" data-discipline="Concept Art" data-type="Visual Development"><div class="asset">Featured artwork placeholder</div><h2>Featured project</h2><span class="tag">Concept Art</span></article>
+<div class="cards">
+<article class="frame" data-specialties="story" data-discipline="Comic" data-type="Sequential Art"><div class="asset">Artwork placeholder</div><h2>Project placeholder</h2><span class="tag">Comic</span></article>
+<article class="frame" data-specialties="art concept" data-discipline="Character Design" data-type="Character Sheet"><div class="asset">Artwork placeholder</div><h2>Project placeholder</h2><span class="tag">Character Design</span></article>
+</div>
+</div><p id="empty" role="status" hidden>No placeholders match these filters.</p>
+</section>
+<section id="about" class="frame" hidden><h1>About</h1><p>Professional profile placeholder for Amanda Durango.</p><a class="button" href="#contact">Contact</a></section>
+<section id="contact" class="frame" hidden><h1>Contact</h1><p>Project inquiry placeholder.</p><a class="button" href="#portfolio">Browse the portfolio</a></section>
+</main>
+<script>
+const views = [...document.querySelectorAll('main > section')];
+const [specialty, discipline, type] = ['specialty','discipline','type'].map(id => document.getElementById(id));
+const projects = [...document.querySelectorAll('[data-specialties]')];
+function filterProjects() {
+  for (const project of projects) {
+    project.hidden = Boolean(
+      (specialty.value && !project.dataset.specialties.split(' ').includes(specialty.value)) ||
+      (discipline.value && discipline.value !== project.dataset.discipline) ||
+      (type.value && type.value !== project.dataset.type)
+    );
+  }
+  document.getElementById('empty').hidden = projects.some(project => !project.hidden);
+}
+function showView(focusHeading = false) {
+  const [route, selected = ''] = location.hash.slice(1).split('/');
+  const active = views.find(view => view.id === route) || views[0];
+  for (const view of views) view.hidden = view !== active;
+  for (const link of document.querySelectorAll('header a')) {
+    if (link.hash === '#' + active.id) link.setAttribute('aria-current','page');
+    else link.removeAttribute('aria-current');
+  }
+  if (active.id === 'portfolio') {
+    specialty.value = ['art','story','concept'].includes(selected) ? selected : '';
+    discipline.value = '';
+    type.value = '';
+    filterProjects();
+  }
+  if (focusHeading) {
+    const heading = active.querySelector('h1');
+    heading.tabIndex = -1;
+    heading.focus();
+    window.scrollTo(0,0);
+  }
+}
+for (const control of [specialty, discipline, type]) control.addEventListener('change',filterProjects);
+document.getElementById('reset').addEventListener('click',() => {
+  for (const control of [specialty, discipline, type]) control.value = '';
+  if (location.hash.includes('/')) history.replaceState(null,'','#portfolio');
+  filterProjects();
+});
+let slide = 0;
+function moveSlide(offset) {
+  slide = (slide + offset + 3) % 3;
+  document.getElementById('slide').textContent = 'Artwork placeholder ' + (slide + 1) + ' of 3';
+}
+document.getElementById('previous').addEventListener('click',() => moveSlide(-1));
+document.getElementById('next').addEventListener('click',() => moveSlide(1));
+window.addEventListener('hashchange',() => showView(true));
+showView();
+</script>
+</html>
