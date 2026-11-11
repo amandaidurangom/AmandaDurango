@@ -6,6 +6,7 @@ export interface SectionHeadingProps {
   kicker?: string;
   subtitle?: string;
   className?: string;
+  ornate?: boolean;
   align?: 'center' | 'left';
 }
 
@@ -14,6 +15,7 @@ export function SectionHeading({
   kicker,
   subtitle,
   className,
+  ornate = false,
   align = 'center',
 }: SectionHeadingProps) {
   const isCentered = align === 'center';
@@ -45,7 +47,12 @@ export function SectionHeading({
           </span>
         )}
 
-        <div className="relative border border-[#b9945c]/25 bg-[#1a1612]/80 px-6 py-2 sm:px-9 sm:py-2.5">
+        <div className={cn("relative min-w-0 border border-[#b9945c]/25 bg-[#1a1612]/80 px-6 py-2 sm:px-9 sm:py-2.5", ornate && "section-title-ornate")}>
+          {ornate && (
+            <span className="frame-trim" aria-hidden="true">
+              <span /><span /><span /><span />
+            </span>
+          )}
           {/* Corner Brackets on Heading Plaque */}
           <span
             aria-hidden="true"

@@ -21,17 +21,17 @@ export const metadata: Metadata = {
 
 export default function PlayingHallPage() {
   return (
-    <div className="flex flex-col gap-6">
-      <SectionHeading title="Playing Hall" />
+    <OrnateFrame variant="hero" className="hall-outer-frame" innerClassName="flex flex-col gap-5 p-4 sm:p-6 lg:p-8">
+      <SectionHeading ornate title="Playing Hall" className="hall-heading relative" />
 
       {/* Main 3-Column RPG Hub Grid on Desktop; Artwork-first priority on Mobile */}
-      <div className="grid grid-cols-1 items-stretch gap-5 lg:grid-cols-[minmax(230px,1fr)_minmax(0,2.7fr)_minmax(230px,1fr)] lg:gap-6">
+      <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(185px,1fr)_minmax(0,3.2fr)_minmax(195px,1fr)] lg:gap-6">
         {/* Column 1 (Left on Desktop, 2nd on Mobile): Character Sheet */}
         <OrnateFrame
           as="aside"
           ariaLabel="Artist RPG Character Sheet"
           variant="panel"
-          className="order-2 lg:order-1"
+          className="order-3 lg:order-1"
           innerClassName="flex h-full flex-col justify-between gap-4 p-4 sm:p-5"
         >
           <CharacterPortrait
@@ -57,8 +57,8 @@ export default function PlayingHallPage() {
           as="nav"
           ariaLabel="Playing Hall RPG commands"
           variant="panel"
-          className="order-3 flex flex-col justify-between"
-          innerClassName="flex h-full flex-col justify-center gap-3 p-4 sm:p-5"
+          className="order-2 lg:order-3"
+          innerClassName="flex flex-col gap-3 p-4 sm:p-5"
         >
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {HALL_COMMANDS.map((cmd) => (
@@ -82,6 +82,6 @@ export default function PlayingHallPage() {
           />
         </div>
       </div>
-    </div>
+    </OrnateFrame>
   );
 }

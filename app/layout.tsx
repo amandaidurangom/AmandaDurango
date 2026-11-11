@@ -57,7 +57,7 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="flex min-h-screen flex-col bg-[#110f0d] text-[#f7ead4]"
+        className="plain-preview flex min-h-screen flex-col bg-[#110f0d] text-[#f7ead4]"
       >
         {/* Accessible Skip Link */}
         <a

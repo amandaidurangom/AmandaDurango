@@ -103,3 +103,326 @@ body {
     ),
     radial-gradient(circle at center, rgba(39, 34, 27, 0.75) 0%, rgba(24, 20, 16, 0.85) 100%);
 }
+
+/* Engraved trim is a separate decorative layer, clear of artwork and controls. */
+.ornate-frame {
+  --corner: 34px;
+  border: 1px solid #785a37;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at top, #27231e, #171614 72%);
+  box-shadow: inset 0 0 0 2px #171310, inset 0 0 0 3px #987344, 0 10px 28px #0006;
+}
+.frame-trim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  --rail: calc(var(--corner) * .89);
+  background:
+    url('/ornaments/hall-frame/rail-top.png') top center / calc(100% - var(--corner) * 2) var(--rail) no-repeat,
+    url('/ornaments/hall-frame/rail-bottom.png') bottom center / calc(100% - var(--corner) * 2) var(--rail) no-repeat,
+    url('/ornaments/hall-frame/rail-left.png') left center / var(--corner) max(0px, calc(100% - var(--rail) * 2)) no-repeat,
+    url('/ornaments/hall-frame/rail-right.png') right center / var(--corner) max(0px, calc(100% - var(--rail) * 2)) no-repeat;
+}
+.frame-trim > span {
+  position: absolute;
+  width: var(--corner);
+  height: var(--rail);
+  background: var(--corner-image) center / contain no-repeat;
+}
+.frame-trim > :nth-child(1) { top: 0; left: 0; --corner-image: url('/ornaments/hall-frame/corner-tl.png'); }
+.frame-trim > :nth-child(2) { top: 0; right: 0; --corner-image: url('/ornaments/hall-frame/corner-tr.png'); }
+.frame-trim > :nth-child(3) { bottom: 0; right: 0; --corner-image: url('/ornaments/hall-frame/corner-br.png'); }
+.frame-trim > :nth-child(4) { bottom: 0; left: 0; --corner-image: url('/ornaments/hall-frame/corner-bl.png'); }
+.ornate-frame[data-frame="hero"] { --corner: clamp(38px, 6vw, 92px); }
+.ornate-frame[data-frame="gallery"] { --corner: clamp(30px, 4vw, 58px); }
+.ornate-frame[data-frame="portrait"] {
+  --corner: 28px;
+  border-radius: 36% 36% 16px 16px / 17% 17% 16px 16px;
+}
+.ornate-frame[data-frame="portrait"] .frame-trim { background: none; }
+.ornate-frame[data-frame="portrait"] .frame-trim > :nth-child(-n+2) { display: none; }
+.ornate-frame[data-frame="portrait"] > div > div { border-radius: inherit; }
+.ornate-frame[data-frame="portrait"] > div { border-radius: inherit; overflow: hidden; }
+.ornate-frame[data-frame="dialogue"] { --corner: 20px; }
+.ornate-frame[data-frame="subtle"] {
+  border-radius: 3px;
+  border-color: #b9945c38;
+  background: #181715;
+  box-shadow: none;
+}
+.ornate-frame[data-frame="subtle"] .frame-trim { --corner: 14px; background: none; opacity: .65; }
+.frame-crest {
+  position: absolute;
+  z-index: 12;
+  top: -12px;
+  left: 50%;
+  width: 62px;
+  height: 22px;
+  transform: translateX(-50%);
+  background: url('/ornaments/crest.svg') center / contain no-repeat;
+  pointer-events: none;
+}
+.hall-heading { padding-top: 2rem; }
+.hall-heading::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 128px;
+  height: 44px;
+  transform: translateX(-50%);
+  background: url('/ornaments/crest.svg') center / contain no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+.rpg-plaque {
+  isolation: isolate;
+  border: 0;
+  background: transparent;
+}
+.rpg-plaque::before,
+.rpg-plaque::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+}
+.rpg-plaque::before { background: linear-gradient(150deg, #f0d49a, #845934 55%, #d8ad70); }
+.rpg-plaque::after { inset: 2px; background: linear-gradient(145deg, #34281d, #181512 65%); }
+.rpg-plaque:hover::after { background: linear-gradient(145deg, #4c3928, #241c16 65%); }
+.specialty-emblem {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  margin: 0 auto .75rem;
+  border: 3px double #cba368;
+  border-radius: 50%;
+  color: #f1d49b;
+  background: #211912;
+}
+
+.rpg-plaque .rpg-plaque-corner {
+  width: 16px;
+  height: 14px;
+  border: 0;
+  background: var(--plaque-corner) center / contain no-repeat;
+}
+.rpg-plaque-corner:nth-child(1) { --plaque-corner: url('/ornaments/hall-frame/corner-tl.png'); }
+.rpg-plaque-corner:nth-child(2) { --plaque-corner: url('/ornaments/hall-frame/corner-tr.png'); }
+.rpg-plaque-corner:nth-child(3) { --plaque-corner: url('/ornaments/hall-frame/corner-bl.png'); }
+.rpg-plaque-corner:nth-child(4) { --plaque-corner: url('/ornaments/hall-frame/corner-br.png'); }
+
+@media (max-width: 639px) {
+  .ornate-frame { --corner: 22px; }
+  .ornate-frame[data-frame="hero"] { --corner: 35px; }
+  .hall-heading::before { width: 95px; }
+}
+
+.hall-artwork-stage {
+  container-type: inline-size;
+}
+.hall-artwork-frame {
+  --frame-unit: clamp(34px, 10cqi, 86px);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: var(--frame-unit) minmax(0, 1fr) calc(var(--frame-unit) * 1.07143) minmax(0, 1fr) var(--frame-unit);
+  grid-template-rows: calc(var(--frame-unit) * .89286) minmax(0, 1fr) calc(var(--frame-unit) * .36071) minmax(0, 1fr) calc(var(--frame-unit) * .89286);
+  pointer-events: none;
+}
+.hall-artwork-frame > span {
+  background: var(--frame-piece) center / 100% 100% no-repeat;
+}
+.hall-artwork-stage > div {
+  margin: 0 clamp(3px, 2cqi, 22px);
+}
+
+/* The illustration sits behind the content and stays still as the page scrolls. */
+body {
+  position: relative;
+  isolation: isolate;
+}
+body::before {
+  --site-art: url('/backgrounds/moon-island-desktop.webp');
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, #11101c48, #11101c62 55%, #100e16ce),
+    var(--site-art) center 42% / cover no-repeat,
+    #19182f;
+}
+.ornate-frame[data-frame="hero"] {
+  background: radial-gradient(ellipse at top, #1b1921d4, #17141aed 74%);
+}
+@media (max-width: 1023px) and (orientation: portrait) {
+  body::before { --site-art: url('/backgrounds/moon-island-tablet.webp'); }
+}
+@media (max-width: 639px) and (orientation: portrait) {
+  body::before { --site-art: url('/backgrounds/moon-island-mobile.webp'); }
+  .ornate-frame[data-frame="hero"] {
+    background: radial-gradient(ellipse at top, #1b1921eb, #17141af5 74%);
+  }
+}
+
+.ornate-frame.intro-frame {
+  background: linear-gradient(180deg, #15131e0d 12%, #15131e16 43%, #15131eeb 74%, #15131e 100%);
+}
+.intro-art {
+  height: clamp(220px, 47svh, 490px);
+}
+@media (max-width: 639px) {
+  .intro-art { height: clamp(165px, 29svh, 255px); }
+  .ornate-frame.intro-frame {
+    background: linear-gradient(180deg, #15131e20 18%, #15131edb 53%, #15131efc 85%);
+  }
+}
+.site-header {
+  --corner: clamp(20px, 3vw, 42px);
+  border-block: 1px solid #785a37;
+}
+.nav-plaque::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .52;
+  background:
+    url('/ornaments/hall-frame/corner-tl.png') top left,
+    url('/ornaments/hall-frame/corner-tr.png') top right,
+    url('/ornaments/hall-frame/corner-bl.png') bottom left,
+    url('/ornaments/hall-frame/corner-br.png') bottom right;
+  background-size: 13px auto;
+  background-repeat: no-repeat;
+}
+.nav-plaque[aria-current="page"]::after,
+.nav-plaque:hover::after,
+.nav-plaque:focus-visible::after {
+  opacity: 1;
+}
+
+.section-title-ornate {
+  --corner: clamp(19px, 3.5vw, 30px);
+  border-color: #987344;
+  background: #171410ed;
+}
+
+.section-title-ornate .frame-trim { background: none; }
+.section-title-ornate > span:not(.frame-trim) { display: none; }
+
+.hall-outer-frame > .frame-trim > :nth-child(1),
+.hall-outer-frame > .frame-trim > :nth-child(3) {
+  --corner-image: url('/ornaments/oak-relief.webp');
+}
+.hall-outer-frame > .frame-trim > :nth-child(3) {
+  transform: rotate(180deg);
+}
+
+/* Plain preview keeps the layout and interaction while testing a quieter direction. */
+.plain-preview .frame-trim,
+.plain-preview .frame-crest,
+.plain-preview .hall-artwork-frame,
+.plain-preview .hall-heading::before,
+.plain-preview .nav-plaque::after,
+.plain-preview .rpg-plaque::before,
+.plain-preview .rpg-plaque::after,
+.plain-preview .rpg-plaque-corner {
+  display: none;
+}
+.plain-preview .ornate-frame,
+.plain-preview .site-header,
+.plain-preview .section-title-ornate {
+  border-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  background: #191715;
+}
+.plain-preview .rpg-plaque {
+  border: 1px solid #6d5c45;
+  border-radius: .25rem;
+  background: #24201b;
+}
+.plain-preview .rpg-plaque:hover { background: #332b22; }
+.plain-preview .intro-art { display: none; }
+.plain-preview .hall-heading { padding-top: 0; }
+.plain-preview .hall-artwork-stage > div { margin: 0; }
+
+.plain-preview .wireframe-crosshair {
+  border-color: transparent;
+  background: #23211e;
+}
+.plain-preview .wireframe-crosshair > span { display: none; }
+.plain-preview .ornate-frame[data-frame="portrait"] { background: transparent; }
+
+.plain-preview::before {
+  --site-art: url('/backgrounds/demo-background.webp');
+  background:
+    linear-gradient(180deg, #100e164d, #100e1680 55%, #100e16e6),
+    var(--site-art) center / cover no-repeat,
+    #19182f;
+}
+.plain-preview .intro-frame { background: #191715d9; }
+.plain-preview .site-header,
+.plain-preview .ornate-frame:not([data-frame="portrait"]),
+.plain-preview .section-title-ornate,
+.plain-preview .wireframe-crosshair {
+  background: rgb(25 23 21 / 70%);
+  backdrop-filter: blur(10px);
+  border-radius: 3%;
+}
+.plain-preview .site-header {
+  box-shadow: 0 8px 18px 3px #1917157a;
+}
+
+@media (pointer: fine) {
+  .plain-preview {
+    --dagger-cursor: url('/ornaments/dagger-cursor.svg') 3 3;
+    cursor: var(--dagger-cursor), auto;
+  }
+  .plain-preview :is(a, button):not(:disabled) { cursor: var(--dagger-cursor), pointer; }
+}
+
+.featured-thumbnail { padding: 0; }
+.featured-thumbnail > div { padding: 0; }
+.featured-thumbnail > div > span { font-size: clamp(8px, 1.3vw, 12px); letter-spacing: .04em; }
+.featured-thumbnail > div > span:last-child { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-slide-in {
+    animation: page-slide-in 700ms cubic-bezier(.2, .75, .25, 1) backwards;
+  }
+}
+
+@keyframes page-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.portfolio-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(94vw, 1000px);
+  max-height: 92dvh;
+  margin: auto;
+  overflow: auto;
+  border: 1px solid #b9945c55;
+  border-radius: 12px;
+  background: #191715;
+}
+.portfolio-dialog::backdrop {
+  background: #0c0a10bb;
+  backdrop-filter: blur(8px);
+}

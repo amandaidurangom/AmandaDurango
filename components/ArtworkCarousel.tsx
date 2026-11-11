@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { HallSlide } from '@/content/types';
 import { ArtworkPlaceholder } from './ArtworkPlaceholder';
 import { OrnateFrame } from './OrnateFrame';
+import { HallArtworkFrame } from './HallArtworkFrame';
 import { cn } from '@/lib/utils';
 
 export interface ArtworkCarouselProps {
@@ -39,10 +40,9 @@ export function ArtworkCarousel({ slides }: ArtworkCarouselProps) {
     <OrnateFrame
       as="section"
       ariaLabel="Featured artwork showcase carousel"
-      variant="hero"
-      showCenterCrest
-      className="flex h-full flex-col justify-between"
-      innerClassName="flex h-full flex-col justify-between gap-4 p-4 sm:p-6"
+      variant="subtle"
+      className="flex flex-col"
+      innerClassName="flex flex-col gap-4 p-4 sm:p-6"
     >
       {/* Top Carousel Header */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#b9945c]/20 pb-2.5">
@@ -67,20 +67,21 @@ export function ArtworkCarousel({ slides }: ArtworkCarouselProps) {
         onKeyDown={handleKeyDown}
         aria-roledescription="carousel"
         aria-label={`Featured artwork slide ${currentIndex + 1} of ${totalSlides}. Use Left and Right arrow keys to change slide.`}
-        className="relative my-auto focus-visible:outline-[2px] focus-visible:outline-[#ffe19e] focus-visible:outline-offset-[4px]"
+        className="hall-artwork-stage relative focus-visible:outline-[2px] focus-visible:outline-[#ffe19e] focus-visible:outline-offset-[4px]"
       >
         <div aria-live="polite" aria-atomic="true">
           <ArtworkPlaceholder asset={activeSlide.asset} />
         </div>
+        <HallArtworkFrame />
       </div>
 
       {/* Manual Controls Bar with Corner Brackets & Fine Lines */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#b9945c]/20 pt-3">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-1 border-t border-[#b9945c]/20 pt-3">
         <button
           type="button"
           onClick={handlePrevious}
           aria-label={`Previous slide (currently showing slide ${currentIndex + 1} of ${totalSlides})`}
-          className="group relative font-display inline-flex min-h-[42px] items-center justify-center gap-2 border border-[#b9945c]/25 bg-[#221c15] px-4 py-2 text-xs font-semibold tracking-[0.12em] text-[#f7ead4] uppercase transition-colors duration-150 hover:border-[#dfc088]/55 hover:bg-[#31281e] cursor-pointer"
+          className="group relative font-display inline-flex min-h-[44px] items-center justify-center gap-2 border border-[#b9945c]/25 bg-[#221c15] px-1.5 py-2 text-[10px] sm:px-4 sm:text-xs font-semibold tracking-[0.12em] text-[#f7ead4] uppercase transition-colors duration-150 hover:border-[#dfc088]/55 hover:bg-[#31281e] cursor-pointer"
         >
           <span
             aria-hidden="true"
@@ -98,7 +99,7 @@ export function ArtworkCarousel({ slides }: ArtworkCarouselProps) {
         <div
           role="group"
           aria-label="Select slide position"
-          className="flex items-center gap-2"
+          className="flex items-center gap-1"
         >
           {slides.map((slide, index) => {
             const isSelected = index === currentIndex;
@@ -126,7 +127,7 @@ export function ArtworkCarousel({ slides }: ArtworkCarouselProps) {
           type="button"
           onClick={handleNext}
           aria-label={`Next slide (currently showing slide ${currentIndex + 1} of ${totalSlides})`}
-          className="group relative font-display inline-flex min-h-[42px] items-center justify-center gap-2 border border-[#b9945c]/25 bg-[#221c15] px-4 py-2 text-xs font-semibold tracking-[0.12em] text-[#f7ead4] uppercase transition-colors duration-150 hover:border-[#dfc088]/55 hover:bg-[#31281e] cursor-pointer"
+          className="group relative font-display inline-flex min-h-[44px] items-center justify-center gap-2 border border-[#b9945c]/25 bg-[#221c15] px-1.5 py-2 text-[10px] sm:px-4 sm:text-xs font-semibold tracking-[0.12em] text-[#f7ead4] uppercase transition-colors duration-150 hover:border-[#dfc088]/55 hover:bg-[#31281e] cursor-pointer"
         >
           <span
             aria-hidden="true"

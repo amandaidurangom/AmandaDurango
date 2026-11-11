@@ -56,6 +56,7 @@ export function RPGCommandButton({
     variant === 'command' &&
       'w-full border-[#b9945c]/22 bg-[#201a15]/85 text-[#f7ead4] hover:border-[#dfc088]/55 hover:bg-[#2f261d]',
     disabled && 'opacity-50 pointer-events-none',
+    (variant === 'command' || variant === 'primary') && 'rpg-plaque',
     className
   );
 
@@ -64,19 +65,19 @@ export function RPGCommandButton({
       {/* Four Corner Brackets on Button */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -top-px -left-px h-2.5 w-2.5 border-t-[1.5px] border-l-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
+        className="rpg-plaque-corner pointer-events-none absolute -top-px -left-px h-2.5 w-2.5 border-t-[1.5px] border-l-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -top-px -right-px h-2.5 w-2.5 border-t-[1.5px] border-r-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
+        className="rpg-plaque-corner pointer-events-none absolute -top-px -right-px h-2.5 w-2.5 border-t-[1.5px] border-r-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-px -left-px h-2.5 w-2.5 border-b-[1.5px] border-l-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
+        className="rpg-plaque-corner pointer-events-none absolute -bottom-px -left-px h-2.5 w-2.5 border-b-[1.5px] border-l-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-px -right-px h-2.5 w-2.5 border-b-[1.5px] border-r-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
+        className="rpg-plaque-corner pointer-events-none absolute -bottom-px -right-px h-2.5 w-2.5 border-b-[1.5px] border-r-[1.5px] border-[#c8a368] transition-colors group-hover:border-[#ffe19e]"
       />
 
       {variant === 'command' ? (
@@ -95,7 +96,7 @@ export function RPGCommandButton({
                 {label}
               </span>
               {sublabel && (
-                <span className="block truncate text-xs text-[#d4c4ac]">
+                <span className="block text-xs text-[#d4c4ac]">
                   {sublabel}
                 </span>
               )}

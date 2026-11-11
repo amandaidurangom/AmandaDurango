@@ -1,4 +1,5 @@
 import React from 'react';
+import { OrnateFrame } from './OrnateFrame';
 import { PlaceholderAsset } from '@/content/types';
 import { ArtworkPlaceholder } from './ArtworkPlaceholder';
 
@@ -16,12 +17,12 @@ export function CharacterPortrait({
   return (
     <div className="flex flex-col items-center gap-3">
       {/* Portrait Slot */}
-      <div className="relative w-full max-w-[260px] lg:max-w-none">
+      <OrnateFrame variant="portrait" showCenterCrest className="w-full max-w-[155px]" innerClassName="p-1 sm:p-1">
         <ArtworkPlaceholder
           asset={portrait}
-          className="aspect-[4/3] sm:aspect-[4/5]"
+          className="aspect-[4/5]"
         />
-      </div>
+      </OrnateFrame>
 
       {/* Character Name Plaque with Corner Brackets & Fine Line */}
       <div className="relative w-full border border-[#b9945c]/22 bg-[#16130f]/85 px-3 py-2.5 text-center">

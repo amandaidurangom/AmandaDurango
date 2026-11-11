@@ -15,17 +15,17 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="flex flex-col gap-6">
-      <SectionHeading title="About" />
+      <SectionHeading ornate title="About" />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(260px,1fr)_2fr]">
-        <RPGPanel
+        <RPGPanel variant="subtle"
           panelTitle={ARTIST_PROFILE.name}
           panelSubtitle={ARTIST_PROFILE.subtitle}
         >
           <ArtworkPlaceholder asset={ARTIST_PROFILE.portrait} />
         </RPGPanel>
 
-        <RPGPanel panelTitle="Character Profile">
+        <RPGPanel variant="subtle" panelTitle="Character Profile">
           <div className="flex flex-col gap-4">
             <div className="border-b border-[#b9945c]/20 pb-4">
               <h3 className="font-display text-xs font-semibold tracking-[0.14em] text-[#e6c687] uppercase">

@@ -1,7 +1,6 @@
 import React from 'react';
 import { INTRO_CONTENT } from '@/content/site-data';
 import { OrnateFrame } from '@/components/OrnateFrame';
-import { ArtworkPlaceholder } from '@/components/ArtworkPlaceholder';
 import { RPGCommandButton } from '@/components/RPGCommandButton';
 
 export default function IntroHybridPage() {
@@ -11,35 +10,11 @@ export default function IntroHybridPage() {
         as="section"
         ariaLabel="Intro Hybrid landing showcase"
         variant="hero"
+        className="intro-frame"
         showCenterCrest
-        innerClassName="flex flex-col gap-6 p-4 sm:p-7 lg:p-10"
+        innerClassName="flex flex-col gap-4 p-5 sm:p-7"
       >
-        {/* Top Artist Identity Banner */}
-        <div className="flex flex-col items-center justify-between gap-2 border-b border-[#b9945c]/20 pb-4 text-center sm:flex-row sm:text-left">
-          <div className="flex items-center gap-3">
-            <span
-              aria-hidden="true"
-              className="relative hidden h-8 w-8 items-center justify-center border border-[#b9945c]/25 bg-[#181410] text-xs text-[#dfc088] sm:flex"
-            >
-              <span className="pointer-events-none absolute -top-px -left-px h-2 w-2 border-t border-l border-[#dfc088]" />
-              <span className="pointer-events-none absolute -bottom-px -right-px h-2 w-2 border-r border-b border-[#dfc088]" />
-              ✦
-            </span>
-            <div>
-              <p className="font-display text-sm font-semibold tracking-[0.16em] text-[#f7ead4] uppercase sm:text-base">
-                {INTRO_CONTENT.artistName}
-              </p>
-              <p className="text-xs tracking-[0.14em] text-[#dfd0b8] uppercase">
-                {INTRO_CONTENT.tagline}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Dominant Hero Illustration Placeholder */}
-        <div className="w-full">
-          <ArtworkPlaceholder asset={INTRO_CONTENT.heroPlaceholder} />
-        </div>
+        <div className="intro-art" aria-hidden="true" />
 
         {/* Ornamental Center Divider */}
         <div
@@ -89,7 +64,7 @@ export default function IntroHybridPage() {
               href={action.href}
               variant={action.variant}
               ariaLabel={`${action.label} — ${action.sublabel}`}
-              className="w-full sm:w-auto sm:min-w-[240px]"
+              className="rpg-plaque w-full sm:w-auto sm:min-w-[240px]"
             />
           ))}
         </div>

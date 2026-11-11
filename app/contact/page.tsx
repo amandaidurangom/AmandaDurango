@@ -22,9 +22,9 @@ const INQUIRY_FIELDS = [
 export default function ContactPage() {
   return (
     <div className="flex flex-col gap-6">
-      <SectionHeading title="Contact" />
+      <SectionHeading ornate title="Contact" />
 
-      <RPGPanel
+      <RPGPanel variant="subtle"
         panelTitle="Project Inquiry"
         panelSubtitle="Concept Art, Comics, Illustration and Design"
       >

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BookOpen, Cog, Sparkles } from 'lucide-react';
 import type { Metadata } from 'next';
 import { WORK_TYPES_PREVIEW } from '@/content/site-data';
 import { SectionHeading } from '@/components/SectionHeading';
@@ -12,10 +13,12 @@ export const metadata: Metadata = {
     'Specializations of Amanda Durango: The Art, The Story, and The Concept.',
 };
 
+const emblems = { art: <Sparkles size={21} />, story: <BookOpen size={21} />, concept: <Cog size={21} /> };
+
 export default function WorkTypesPage() {
   return (
     <div className="flex flex-col gap-6">
-      <SectionHeading title="Select Your Type of Work" />
+      <SectionHeading ornate title="Select Your Type of Work" />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {WORK_TYPES_PREVIEW.map((specialty) => (
@@ -23,12 +26,12 @@ export default function WorkTypesPage() {
             key={specialty.id}
             as="article"
             variant="panel"
-            showCenterCrest
             innerClassName="flex h-full flex-col justify-between gap-5 p-5"
           >
             <div className="flex flex-col gap-4">
               {/* Title Plaque */}
               <div className="border-b border-[#b9945c]/20 pb-3 text-center">
+                <span className="specialty-emblem" aria-hidden="true">{emblems[specialty.id]}</span>
                 <h2 className="font-display text-xl font-semibold tracking-[0.14em] text-[#f7ead4] uppercase">
                   {specialty.title}
                 </h2>
@@ -77,7 +80,7 @@ export default function WorkTypesPage() {
               label={specialty.ctaLabel}
               href={specialty.href}
               variant="secondary"
-              className="w-full"
+              className="rpg-plaque w-full"
             />
           </OrnateFrame>
         ))}

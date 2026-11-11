@@ -10,7 +10,10 @@ export function GlobalNavigation() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full border-b border-[#b9945c]/22 bg-[#14110e]/90">
+    <header className="site-header relative isolate w-full bg-[#14110e]/90">
+      <span className="frame-trim" aria-hidden="true">
+        <span /><span /><span /><span />
+      </span>
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-8 lg:py-4">
         {/* Zone 1: Brand Identity Link to Intro (/) */}
         <div className="flex items-center justify-between gap-3">
@@ -50,32 +53,12 @@ export function GlobalNavigation() {
                 href={item.href}
                 aria-current={isActive ? 'page' : undefined}
                 className={cn(
-                  'font-display relative inline-flex min-h-[40px] items-center justify-center px-2.5 py-1.5 text-xs font-medium tracking-[0.09em] uppercase transition-colors duration-150 whitespace-nowrap sm:min-h-[42px] sm:px-3.5 sm:text-[13px]',
+                  'nav-plaque font-display relative inline-flex min-h-[44px] items-center justify-center px-2.5 py-1.5 text-xs font-medium tracking-[0.09em] uppercase transition-colors duration-150 whitespace-nowrap sm:px-3.5 sm:text-[13px]',
                   isActive
                     ? 'border border-[#b9945c]/30 bg-[#251e17] text-[#ffe19e]'
                     : 'border border-transparent text-[#dfd0b8] hover:border-[#b9945c]/25 hover:bg-[#1e1914] hover:text-[#f7ead4]'
                 )}
               >
-                {isActive && (
-                  <>
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -top-px -left-px h-2 w-2 border-t border-l border-[#ffe19e]"
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -top-px -right-px h-2 w-2 border-t border-r border-[#ffe19e]"
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -bottom-px -left-px h-2 w-2 border-b border-l border-[#ffe19e]"
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -bottom-px -right-px h-2 w-2 border-r border-b border-[#ffe19e]"
-                    />
-                  </>
-                )}
                 <span className="sm:hidden">{item.shortLabel ?? item.label}</span>
                 <span className="hidden sm:inline">{item.label}</span>
               </Link>

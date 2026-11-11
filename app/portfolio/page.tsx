@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { TAXONOMY_FAMILIES } from '@/content/taxonomy-reference';
 import { SectionHeading } from '@/components/SectionHeading';
 import { RPGPanel } from '@/components/RPGPanel';
-import { ArtworkPlaceholder } from '@/components/ArtworkPlaceholder';
+import { PortfolioArtwork } from '@/components/PortfolioArtwork';
 
 export const metadata: Metadata = {
   title: 'The Art Portfolio · Amanda Durango',
@@ -14,31 +14,62 @@ export const metadata: Metadata = {
 export default function ArtPortfolioPage() {
   return (
     <div className="flex flex-col gap-8">
-      <SectionHeading title="The Art Portfolio" />
+      <SectionHeading ornate title="The Art Portfolio" />
 
       {/* Editorial Gallery Layout */}
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.35fr_1fr]">
-        <RPGPanel
-          panelTitle="Featured Project"
-          panelSubtitle="Concept Art · Visual Development"
-        >
-          <ArtworkPlaceholder
-            asset={{
-              id: 'portfolio-featured-placeholder',
-              label: 'FEATURED ARTWORK',
-              dimensionsText: '1200 × 675',
-              aspectRatioClass: 'aspect-[16/9]',
-              aspectRatioPreset: 'landscape',
-            }}
-          />
-        </RPGPanel>
+      <div data-portfolio-gallery className="grid grid-cols-1 items-start gap-5 lg:grid-cols-[1.35fr_1fr]">
+        <div className="grid min-w-0 gap-5">
+          <RPGPanel
+            variant="gallery"
+            panelTitle="Featured Project"
+            panelSubtitle="Concept Art · Visual Development"
+          >
+            <PortfolioArtwork
+              title="Featured Project"
+              description="Concept Art · Visual Development. Artwork and project description pending."
+              asset={{
+                id: 'portfolio-featured-placeholder',
+                label: 'FEATURED ARTWORK',
+                dimensionsText: '1200 × 675',
+                aspectRatioClass: 'aspect-[16/9]',
+                aspectRatioPreset: 'landscape',
+              }}
+            />
+          </RPGPanel>
+
+          <div className="grid grid-cols-3 gap-2 sm:gap-5">
+            {[1, 2, 3].map((index) => (
+              <RPGPanel key={index} as="article" variant="subtle" innerClassName="gap-2 p-2 sm:p-3">
+                <div>
+                  <h2 className="font-display text-[11px] font-semibold leading-tight sm:text-sm">Project Title</h2>
+                  <p className="mt-1 text-[10px] leading-tight text-[#d4c4ac] sm:text-xs">Character Design · Character Sheet</p>
+                </div>
+                <PortfolioArtwork
+                  title="Project Title"
+                  description="Character Design · Character Sheet. Artwork and project description pending."
+                  className="featured-thumbnail"
+                  asset={{
+                    id: `portfolio-featured-image-${index}`,
+                    label: `IMAGE ${index}`,
+                    dimensionsText: '600 × 338',
+                    aspectRatioClass: 'aspect-[16/9]',
+                    aspectRatioPreset: 'card',
+                  }}
+                />
+              </RPGPanel>
+            ))}
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-1">
           <RPGPanel
+            variant="subtle"
             panelTitle="Project Title"
             panelSubtitle="Comic · Sequential Art"
           >
-            <ArtworkPlaceholder
+            <PortfolioArtwork
+              title="Project Title"
+              description="Comic · Sequential Art. Artwork and project description pending."
               asset={{
                 id: 'portfolio-secondary-a',
                 label: 'PROJECT IMAGE',
@@ -50,10 +81,13 @@ export default function ArtPortfolioPage() {
           </RPGPanel>
 
           <RPGPanel
+            variant="subtle"
             panelTitle="Project Title"
             panelSubtitle="Character Design · Character Sheet"
           >
-            <ArtworkPlaceholder
+            <PortfolioArtwork
+              title="Project Title"
+              description="Character Design · Character Sheet. Artwork and project description pending."
               asset={{
                 id: 'portfolio-secondary-b',
                 label: 'PROJECT IMAGE',
@@ -82,6 +116,7 @@ export default function ArtPortfolioPage() {
             <RPGPanel
               key={family.id}
               as="article"
+              variant="subtle"
               panelTitle={family.familyName}
             >
               <ul className="flex flex-col gap-1.5 text-xs text-[#f7ead4] sm:text-sm">
